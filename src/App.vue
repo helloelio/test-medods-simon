@@ -1,26 +1,29 @@
 <template>
   <div class="container">
     <div class="game">
-      <div
-        ref="one"
-        class="game-element top-left"
-        @click="handlerGame(1)"
-      ></div>
-      <div
-        ref="two"
-        class="game-element top-right"
-        @click="handlerGame(2)"
-      ></div>
-      <div
-        ref="three"
-        class="game-element bottom-left"
-        @click="handlerGame(3)"
-      ></div>
-      <div
-        ref="four"
-        class="game-element bottom-right"
-        @click="handlerGame(4)"
-      ></div>
+      <div ref="one" class="game-element top-left" @click="handlerGame(1)">
+        <audio ref="clip1">
+          <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" />
+        </audio>
+      </div>
+
+      <div ref="two" class="game-element top-right" @click="handlerGame(2)">
+        <audio ref="clip2">
+          <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" />
+        </audio>
+      </div>
+
+      <div ref="three" class="game-element bottom-left" @click="handlerGame(3)">
+        <audio ref="clip3">
+          <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" />
+        </audio>
+      </div>
+
+      <div ref="four" class="game-element bottom-right" @click="handlerGame(4)">
+        <audio ref="clip4">
+          <source src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" />
+        </audio>
+      </div>
     </div>
     <div class="controls">
       <form>
@@ -114,22 +117,23 @@ export default {
     lightingButton(index) {
       switch (index) {
         case 1:
-          this.lightingButtonHelper(this.$refs.one);
+          this.lightingButtonHelper(this.$refs.one, this.$refs.clip1);
           break;
         case 2:
-          this.lightingButtonHelper(this.$refs.two);
+          this.lightingButtonHelper(this.$refs.two, this.$refs.clip2);
           break;
         case 3:
-          this.lightingButtonHelper(this.$refs.three);
+          this.lightingButtonHelper(this.$refs.three, this.$refs.clip3);
           break;
         case 4:
-          this.lightingButtonHelper(this.$refs.four);
+          this.lightingButtonHelper(this.$refs.four, this.$refs.clip4);
           break;
       }
     },
 
-    lightingButtonHelper(item) {
+    lightingButtonHelper(item, audio) {
       item.classList.add('light');
+      audio.play();
       if (!this.win) {
         setTimeout(() => {
           item.classList.remove('light');
@@ -223,22 +227,33 @@ export default {
   border-top-left-radius: 100%;
   background-color: green;
 }
-.light {
-  opacity: 0.7;
+.top-left:active {
+  opacity: 0.8;
 }
 .top-right {
   border-top-right-radius: 100%;
   background-color: red;
 }
+.top-right:active {
+  opacity: 0.8;
+}
 .bottom-left {
   border-bottom-left-radius: 100%;
   background-color: yellow;
+}
+.bottom-left:active {
+  opacity: 0.8;
 }
 .bottom-right {
   border-bottom-right-radius: 100%;
   background-color: blue;
 }
-
+.bottom-right:active {
+  opacity: 0.8;
+}
+.light {
+  opacity: 0.7;
+}
 .round-counter {
   padding: 10px;
   background-color: rgb(68, 19, 19);
