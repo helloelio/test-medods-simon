@@ -26,13 +26,12 @@
       </div>
     </div>
     <div class="controls">
-      <form>
-        <input type="radio" name="diff" value="easy" v-model="diff" />Easy
-        <input type="radio" name="diff" value="normal" v-model="diff" />
-        Normal
-        <input type="radio" name="diff" value="hard" v-model="diff" />
-        Hard
-      </form>
+      Game options:
+      <input type="radio" name="diff" value="easy" v-model="diff" />Easy
+      <input type="radio" name="diff" value="normal" v-model="diff" />
+      Normal
+      <input type="radio" name="diff" value="hard" v-model="diff" />
+      Hard
       <button class="btn" @click="startGame">Start Game</button>
       <div class="round-counter">Round: {{ round }}</div>
       <div class="winner" v-if="this.win">Congratulations your winner!</div>
