@@ -109,7 +109,7 @@ export default {
           if (this.order[this.flash] == 3) this.lightingButton(3);
           if (this.order[this.flash] == 4) this.lightingButton(4);
           this.flash += 1;
-        }, 200);
+        }, 800);
       }
     },
 
